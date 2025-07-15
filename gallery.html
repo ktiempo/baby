@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About You</a>
+      <a href="reasons.html">Why I Love You</a>
+      <a href="message.html">Message</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Memories 📸</h2>
+
+    <!-- 🎵 Music Control Button -->
+    <div class="music-control">
+      <button id="toggle-music">⏸ Pause Music</button>
+    </div>
+
+    <!-- 🎶 Background Music -->
+    <audio id="bg-music" autoplay loop>
+      <source src="Rico Blanco - Your Universe (Instrumental).mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- 📷 Photo Gallery -->
+    <div class="gallery">
+      <img src="1.jpg" alt="Memory 1">
+      <img src="2.jpg" alt="Memory 2">
+      <img src="3.jpg" alt="Memory 3">
+      <img src="4.jpg" alt="Memory 4">
+      <img src="5.jpg" alt="Memory 5">
+      <img src="6.jpg" alt="Memory 6">
+      <img src="7.jpg" alt="Memory 7">
+      <img src="8.jpg" alt="Memory 8">
+      <img src="9.jpg" alt="Memory 9">
+      <img src="10.jpg" alt="Memory 10">
+      <img src="11.jpg" alt="Memory 11">
+      <img src="12.jpg" alt="Memory 12">
+      <img src="13.jpg" alt="Memory 13">
+      <img src="14.jpg" alt="Memory 14">
+      <img src="15.jpg" alt="Memory 15">
+      <img src="16.jpg" alt="Memory 16">
+      <img src="17.jpg" alt="Memory 17">
+      <img src="18.jpg" alt="Memory 18">
+    </div>
+
+    <!-- 🖼️ Lightbox Viewer -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+    </div>
+  </main>
+
+  <!-- 🔧 Scripts -->
+  <script>
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const closeBtn = document.querySelector('.close');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+
+    // Music Toggle Button
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('toggle-music');
+    let isPlaying = true;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.textContent = '▶️ Play Music';
+      } else {
+        music.play();
+        musicBtn.textContent = '⏸ Pause Music';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
